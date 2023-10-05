@@ -1,11 +1,15 @@
 <script setup lang="ts">
-const route = useRoute()
+const switchLocalePath = useSwitchLocalePath()
 </script>
 
 <template>
-  <div>
-    <h1>Nuxt Routing set up successfully!</h1>
-    <p>Current route: {{ route.path }}</p>
-    <a href="https://nuxt.com/docs/getting-started/routing" target="_blank">Learn more about Nuxt Routing</a>
-  </div>
+	<form>
+		<NuxtLink :to="switchLocalePath('uz')">Uzbek</NuxtLink>
+		<NuxtLink :to="switchLocalePath('ru')">Russia</NuxtLink>
+		<NuxtLink :to="switchLocalePath('en')">English</NuxtLink>
+
+		<p>{{ $t('welcome') }}</p>
+	</form>
+
+	<h1>123 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam corporis debitis deserunt dignissimos distinctio dolore, excepturi incidunt laborum mollitia natus non odio perspiciatis praesentium quam quo reprehenderit repudiandae, totam vel.</h1>
 </template>

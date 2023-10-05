@@ -1,5 +1,7 @@
 <template>
-	<div>
-		Muhammad
-	</div>
+	<NuxtLayout>
+		<NuxtLoadingIndicator />
+
+		<NuxtPage />
+	</NuxtLayout>
 </template>
