@@ -1,11 +1,10 @@
 <script setup lang="ts">
+
 </script>
 
 <template>
-	<div class="default-layout-view">
-		<the-header />
-
-		<slot />
+	<div class="corporate-customers-home-view">
+		corporate-customers home view
 	</div>
 </template>
 

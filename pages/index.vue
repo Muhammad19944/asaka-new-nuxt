@@ -1,15 +1,13 @@
 <script setup lang="ts">
-const switchLocalePath = useSwitchLocalePath()
+const route = useRoute()
+
+onMounted(() => {
+	if(route && (route.fullPath === "/uz" || route.fullPath === "/ru" || route.fullPath === "/en")) {
+		navigateTo("/uz/physical-persons/home")
+	}
+})
 </script>
 
 <template>
-	<form>
-		<NuxtLink :to="switchLocalePath('uz')">Uzbek</NuxtLink>
-		<NuxtLink :to="switchLocalePath('ru')">Russia</NuxtLink>
-		<NuxtLink :to="switchLocalePath('en')">English</NuxtLink>
-
-		<p>{{ $t('welcome') }}</p>
-	</form>
-
-	<h1>123 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam corporis debitis deserunt dignissimos distinctio dolore, excepturi incidunt laborum mollitia natus non odio perspiciatis praesentium quam quo reprehenderit repudiandae, totam vel.</h1>
+	<NuxtPage />
 </template>
