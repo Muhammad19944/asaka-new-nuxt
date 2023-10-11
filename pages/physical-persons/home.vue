@@ -4,7 +4,9 @@
 
 <template>
 	<div class="physical-home-view">
-		physical-home-view
+		<section class="py-[140px]">
+			<exchange-rates />
+		</section>
 	</div>
 </template>
 
