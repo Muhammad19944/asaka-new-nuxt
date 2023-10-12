@@ -1,5 +1,7 @@
 export default defineAppConfig({
 	ui: {
-		primary: "primary-color"
+		safelistColors: ['light'],
+		primary: "primary-color",
+		light: "light"
 	}
 })
