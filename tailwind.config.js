@@ -29,10 +29,12 @@ module.exports = {
 				"success-color": "#99B24E",
 				"danger-color": "#E84456",
 				"dark-1": "#333232",
+				"dark-2": "#2F2F2F",
 				"light-1": "#efefef",
 				"light-2": "#A9A9A9",
 				"light-3": "#F9F9FA",
 				"light-4": "#9C9C9C",
+				"light-5": "#EDEDEE",
 			},
 			keyframes: {
 				line: {
@@ -42,6 +44,11 @@ module.exports = {
 				animation: {
 					line: 'line 8.2s infinite'
 				}
+			},
+			boxShadow: {
+				"shadow-1": "0 0 14px rgba(0, 0, 0, 0.1)",
+				"shadow-2": "0 0 26px rgba(0, 0, 0, 0.1)",
+				"shadow-3": "0 4px 4px rgba(0, 0, 0, 0.25)",
 			}
 		}
 	}
