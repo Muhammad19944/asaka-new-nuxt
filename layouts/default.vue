@@ -5,6 +5,8 @@
 	<div class="default-layout-view">
 		<the-header />
 
+		<app-navigation />
+
 		<slot />
 	</div>
 </template>

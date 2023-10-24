@@ -35,6 +35,7 @@ module.exports = {
 				"light-3": "#F9F9FA",
 				"light-4": "#9C9C9C",
 				"light-5": "#EDEDEE",
+				"light-6": "#bebdbe",
 			},
 			keyframes: {
 				line: {

@@ -3,7 +3,7 @@
 </script>
 
 <template>
-	<header class="app-header py-6">
+	<header class="app-header bg-white py-6 fixed top-0 w-full z-[99]">
 		 <ui-container>
 			 <div class="flex items-center">
 				 <div class="flex items-center">
@@ -13,6 +13,8 @@
 			 </div>
 		 </ui-container>
 	</header>
+
+	<div class="h-[79px]"></div>
 </template>
 
 <style scoped>
