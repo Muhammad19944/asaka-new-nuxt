@@ -174,9 +174,15 @@ const menus = ref([
 const menusMoreCount = ref(1)
 const lastScrollTop = ref(0)
 // Computed
+const parentRoute = computed(() => menus.value.find(menu => menu.link === route.fullPath.slice(3)))
 const isMoreOpen = computed(() => menusMoreCount.value & 1)
 const menusCollapsed = computed(() => isMoreOpen.value ? menus.value.slice(0, 3) : menus.value)
-const parentRoute = computed(() => menus.value.find(menu => menu.link === route.fullPath.slice(3)))
+const collapseMapping = computed(() => parentRoute.value.children.map(menu => {
+	return {
+		...menu,
+		label: menu.title,
+	}
+}))
 // Methods
 const handleScroll = (ref) => {
 	const currentScrollTop = window.pageYOffset || window.scrollY || document.documentElement.scrollTop
@@ -256,16 +262,23 @@ onMounted(() => {
 
 		<div ref="collapsedMenuRef" class="fixed w-full mt-6 hidden">
 			<ui-container data-type="container">
-				<div class="block-item-wrapper w-[72px] rounded-lg bg-white shadow-[0_0_9px_0_rgba(0,0,0,0.1)] transition-all hover:w-[350px]">
-					<template v-for="(menu, index) in parentRoute.children">
-						<div class="block-item-link group w-full h-[72px] flex items-center rounded-lg px-5 cursor-pointer transition-all hover:shadow-[0_0_9px_0_rgba(0,0,0,0.1)]">
-							<div class="w-8">
-								<img :src="menu.icon" :alt="menu.title" class="block opacity-50 group-hover:opacity-100" />
-							</div>
+				<div class="block-item-wrapper w-[72px] max-h-[650px] overflow-y-auto rounded-lg bg-white shadow-[0_0_9px_0_rgba(0,0,0,0.1)] transition-all hover:w-[350px]">
+					<UAccordion :items="collapseMapping">
+						<template #default="{ item, index, open }">
+							<div class="block-item-link group w-full h-[72px] flex items-center rounded-lg px-5 cursor-pointer transition-all hover:shadow-[0_0_9px_0_rgba(0,0,0,0.1)]">
+								<div class="w-8">
+									<img :src="item.icon" :alt="item.label" class="block opacity-50 group-hover:opacity-100" />
+								</div>
 
-							<span class="text-light-6 text-xl font-bold ml-2 hidden whitespace-nowrap">{{ menu.title }}</span>
-						</div>
-					</template>
+								<span class="text-light-6 text-xl font-bold ml-2 hidden truncate whitespace-nowrap">{{ item.label }}</span>
+
+								<i :class="open ? 'i-heroicons-chevron-up' :'i-heroicons-chevron-down'" class="ml-auto hidden"></i>
+							</div>
+						</template>
+						<template #item="{ item }">
+							<pre>{{ item }}</pre>
+						</template>
+					</UAccordion>
 				</div>
 			</ui-container>
 		</div>
@@ -292,5 +305,9 @@ onMounted(() => {
 .block-item-wrapper:hover span {
 	color: #333232;
 	display: block;
+}
+
+.block-item-wrapper:hover .block-item-link i {
+	display: block !important;
 }
 </style>
