@@ -1,4 +1,6 @@
 <script setup>
+// Composable
+const route = useRoute()
 // Reactive
 const menus = ref([
 	{
@@ -167,13 +169,8 @@ const menus = ref([
 		]
 	},
 ])
-const menusMoreCount = ref(0)
 const currentCategoryIndex = ref(0)
-// Composable
-const route = useRoute()
 // Computed
-const isMoreOpen = computed(() => menusMoreCount.value & 1)
-const menusCollapsed = computed(() => isMoreOpen.value ? menus.value.slice(0, 3) : menus.value)
 const parentRoute = computed(() => menus.value.find(menu => menu.link === route.fullPath.slice(3)))
 // Methods
 const openCategory = (index) => {
@@ -183,27 +180,8 @@ const openCategory = (index) => {
 
 <template>
 	<div class="app-navigation">
-		<div class="bg-light-3 h-[770px]">
-			<ui-container>
-				<div class="flex items-center gap-[18px] py-[30px]">
-					<template v-for="menu in menusCollapsed">
-						<nuxt-link-locale
-							:to="menu.link"
-							class="top-level-link text-dark-1 py-[10px] px-[18px] rounded-xl border-2 border-transparent transition-all hover:border-danger-color hover:text-danger-color"
-						>
-							{{ menu.title }}
-						</nuxt-link-locale>
-					</template>
-
-					<button type="button" class="group flex items-center" @click="menusMoreCount = menusMoreCount + 1">
-						<span class="text-light-2 mr-2 group-hover:text-danger-color">Eщё</span>
-						<UIcon
-							:name="isMoreOpen ? 'i-heroicons-chevron-double-right' : 'i-heroicons-chevron-double-left'"
-							class="text-light-2 group-hover:text-danger-color"
-						/>
-					</button>
-				</div>
-
+		<div class="bg-light-3 h-[770px] pt-9">
+			<ui-container data-type="container">
 				<div class="flex">
 					<div class="w-[385px] -mr-[30px] mt-[23px]">
 						<template v-for="(menu, index) in parentRoute.children">
@@ -296,11 +274,6 @@ const openCategory = (index) => {
 </template>
 
 <style>
-.top-level-link.router-link-active {
-	border-color: rgb(232 68 86 / 1);
-	color: rgb(232 68 86 / 1);
-}
-
 .top-level-link-category.active {
 	background: white;
 	box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.1);

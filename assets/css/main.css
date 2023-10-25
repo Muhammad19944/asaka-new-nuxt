@@ -3,3 +3,7 @@
 body {
   font-family: "Acrom-Regular", serif;
 }
+
+div[data-type='container'].fluid-container {
+  max-width: 1560px !important;
+}

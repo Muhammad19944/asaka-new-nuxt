@@ -3,9 +3,11 @@
 
 <template>
 	<div class="default-layout-view">
-		<the-header />
+		<div id="layout-header" class="layout-header">
+			<the-header />
 
-		<app-navigation />
+			<app-navigation />
+		</div>
 
 		<slot />
 	</div>
