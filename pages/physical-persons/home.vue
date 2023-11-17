@@ -113,7 +113,7 @@
 						<h1 class="text-[50px] font-extraBold text-dark-1 leading-[1.2em] mb-5">Стань ближе к своей мечте!</h1>
 						<p class="text-base text-light-4">Мы стремимся делать Вашу жизнь лучше, поэтому наши специалисты подготовили для Вас персональное предложение! Не упустите шанс!</p>
 
-						<UForm class="mt-8">
+						<UForm :state="{}" class="mt-8">
 							<UFormGroup name="email" class="mb-7">
 								<UInput size="xl" placeholder="Ваше имя*" variant="none" class="border border-light-1 bg-light-3 rounded-lg" />
 							</UFormGroup>

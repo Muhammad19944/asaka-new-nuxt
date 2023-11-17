@@ -1,5 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      apiBase: 'https://new.asakabank.uz'
+    }
+  },
   /*
   * CSS
   * */
@@ -11,7 +16,9 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/ui',
     '@nuxtjs/i18n',
-    'nuxt-swiper'
+    'nuxt-swiper',
+    '@vueuse/nuxt',
+    '@pinia/nuxt'
   ],
   i18n: {
     baseUrl: 'https://asakabank.uz',
@@ -38,6 +45,7 @@ export default defineNuxtConfig({
     langDir: 'locales',
     lazy: true,
     defaultLocale: 'uz',
+    // @ts-ignore
     fallbackLocale: 'ru',
     strategy: 'prefix',
     detectBrowserLanguage: {

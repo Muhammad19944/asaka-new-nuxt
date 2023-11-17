@@ -21,3 +21,13 @@ div[data-type='container'].fluid-container {
   border-radius: 5px;
   box-shadow: inset 0 0 10px rgba(0,0,0,.1);
 }
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}

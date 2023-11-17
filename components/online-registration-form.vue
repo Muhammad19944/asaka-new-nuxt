@@ -11,7 +11,7 @@
 			</p>
 
 			<div class="mt-8 px-[112px]">
-				<UForm class="flex gap-24">
+				<UForm :state="{}" class="flex gap-24">
 					<div class="w-1/2">
 						<UFormGroup name="email" class="mb-8">
 							<UInput size="xl" placeholder="Ваше имя*" variant="none" class="border border-light-1 bg-light-3 rounded-lg" />
