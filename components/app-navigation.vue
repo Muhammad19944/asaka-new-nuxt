@@ -1,5 +1,6 @@
 <script setup>
 // Store
+const route = useRoute()
 import { useMenuStore } from '~/store/menu.store'
 // Composable
 const menuStore = useMenuStore()
@@ -12,7 +13,7 @@ const openCategory = (index) => {
 </script>
 
 <template>
-	<div class="app-navigation">
+	<div v-if="route.fullPath.includes('/home')" class="app-navigation">
 		<div class="bg-light-3 h-[770px] pt-9">
 			<ui-container data-type="container">
 				<div class="flex">
@@ -106,15 +107,17 @@ const openCategory = (index) => {
 
 							<div class="mt-[30px]">
 								<div class="text-right">
-									<UButton
-										size="lg"
-										color="primary"
-										:ui="{ padding: { lg: 'px-8' }, rounded: 'rounded-lg' }"
-										icon="i-heroicons-arrow-long-right"
-										trailing
-									>
-										<span class="text-base font-regular">Все кредиты</span>
-									</UButton>
+									<nuxt-link-locale to="/physical-persons/credits">
+										<UButton
+											size="lg"
+											color="primary"
+											:ui="{ padding: { lg: 'px-8' }, rounded: 'rounded-lg' }"
+											icon="i-heroicons-arrow-long-right"
+											trailing
+										>
+											<span class="text-base font-regular">Все кредиты</span>
+										</UButton>
+									</nuxt-link-locale>
 								</div>
 							</div>
 						</template>

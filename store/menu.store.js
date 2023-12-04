@@ -1,8 +1,4 @@
 import { defineStore } from 'pinia'
-import { useRoute } from "#app"
-// Composable
-const runtimeConfig = useRuntimeConfig()
-const route = useRoute()
 export const useMenuStore = defineStore('menu', () => {
 	// Reactive
 	let menus = ref([])
@@ -11,10 +7,15 @@ export const useMenuStore = defineStore('menu', () => {
 
 	// Methods
 	const getMenu = async () => {
+		const runtimeConfig = useRuntimeConfig()
+
 		try {
 			menuLoading.value = true
 			const { results } = await $fetch(`${runtimeConfig.public.apiBase}/menu/v1/list/`, {
-				method: 'GET'
+				method: 'GET',
+				headers: {
+					'Accept-Language': 'uz'
+				}
 			})
 			menus.value = results
 			setCurrentRoute()
@@ -27,7 +28,10 @@ export const useMenuStore = defineStore('menu', () => {
 	}
 
 	const setCurrentRoute = () => {
-		return currentRoute.value = menus.value.find(menu => menu?.config.link === route.fullPath.slice(3))
+		const route = useRoute()
+		const parent = route.fullPath.split('/')[2]
+
+		return currentRoute.value = menus.value.find(menu => menu?.config.link.includes(parent))
 	}
 
 	return {

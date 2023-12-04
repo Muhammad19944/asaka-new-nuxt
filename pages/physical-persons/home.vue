@@ -140,8 +140,6 @@
 		<section class="pt-[62px] pb-[139px]">
 			<online-registration-form />
 		</section>
-
-		<the-footer />
 	</div>
 </template>
 

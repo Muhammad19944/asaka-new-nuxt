@@ -1,6 +1,7 @@
 <script setup>
 // Store
 import { useMenuStore } from '~/store/menu.store'
+import SearchMenu from "~/components/search-menu.vue";
 // Composable
 const route = useRoute()
 const menuStore = useMenuStore()
@@ -68,11 +69,12 @@ onMounted(async () => {
 						<img src="/images/logo-text.svg" alt="Logo text" />
 					</div>
 
-					<div class="flex-1 flex items-center gap-10 justify-end">
+					<div class="flex-1 flex items-center gap-8 justify-end">
 						<app-language />
 
-						<div>22</div>
-						<div>33</div>
+						<user-dropdown />
+
+						<search-menu />
 					</div>
 				</div>
 			</ui-container>
@@ -91,7 +93,7 @@ onMounted(async () => {
 					<template v-else>
 						<template v-for="menu in menusCollapsed">
 							<nuxt-link-locale
-								:to="menu.config.link"
+								:to="`${menu.config.link}/home`"
 								class="top-level-link text-dark-1 py-[10px] px-[18px] rounded-xl border-2 border-transparent transition-all hover:border-danger-color hover:text-danger-color"
 							>
 								{{ menu.title }}
@@ -132,7 +134,7 @@ onMounted(async () => {
 		</div>
 	</header>
 
-	<div class="h-[160px]"></div>
+	<div class="h-[187px]"></div>
 </template>
 
 <style>

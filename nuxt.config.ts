@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      apiBase: 'https://new.asakabank.uz'
+      apiBase: 'https://new-api.asakabank.uz'
     }
   },
   /*

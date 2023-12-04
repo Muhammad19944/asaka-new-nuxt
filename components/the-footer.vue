@@ -69,14 +69,14 @@ const items = ref([
 					<template v-else>
 						<template v-for="menu in menuStore.menus">
 							<div class="w-[calc(25%-30px)]">
-								<router-link :to="menu.config.link" class="inline-block mb-1">
+								<nuxt-link-locale :to="`${menu.config.link}/home`" class="inline-block mb-1">
 									{{ menu.title }}
-								</router-link>
+								</nuxt-link-locale>
 
 								<template v-for="child in menu.children">
 									<div>
 										<UDropdown :items="items" :popper="{ placement: 'bottom-start' }">
-											<div class="inline-block text-light-2 mb-2 text-[15px]">
+											<div class="inline-block text-light-2 mb-2 text-[15px] hover:text-white">
 												{{ child.title }}
 											</div>
 

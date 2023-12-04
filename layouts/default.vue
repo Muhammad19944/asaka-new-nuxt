@@ -10,6 +10,8 @@
 		</div>
 
 		<slot />
+
+		<the-footer />
 	</div>
 </template>
 
